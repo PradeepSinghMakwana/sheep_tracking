@@ -47,4 +47,4 @@ These lines are from setup_N_run.sh
 !python test_on_video.py --video-input video-clip.mp4 --video-output vdo
 ```
 
-This project is completely my creation which wasn't paid by one of my freelancer.com clients. So, I make it public. It's here you can use it for free. For any questions, just create an issue.
+This project is completely my creation (although, I have used some demo files) which wasn't paid by one of my freelancer.com clients. But it's needed by many good people.  So, I make it public. It's here you can use it for free. For any questions, just create an issue.
