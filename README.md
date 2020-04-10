@@ -14,9 +14,9 @@ The project results can be produced by running the below code in a GPU environme
 import zipfile
 with zipfile.ZipFile('sheep_tracking-master.zip', 'r') as zip_ref:
   zip_ref.extractall('/content')
-!mv sheep_tracking/* ./
-!rm sheep_tracking.zip
-!rmdir sheep_tracking
+!mv sheep_tracking-master/* ./
+!rm sheep_tracking-master.zip
+!rmdir sheep_tracking-master
 ```
 
 ## run
