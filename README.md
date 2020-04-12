@@ -36,7 +36,7 @@ If you want some other class to be detected you can just change it in predictor.
   
   
 ## for experts
-The setup_N_run.sh contains the following lines. You can change the config-file attribute to change the detection modal. You can experiment with some other parameters given in the source code of files `sheepFinder.py` and `predictor.py`.
+The setup_N_run.sh contains the following lines. You can change the config-file attribute to change the detection modal. You can experiment with some other parameters given in the source code of files `sheepFinder.py` and `test_on_video.py`.
 
 These lines are from setup_N_run.sh
 ```
