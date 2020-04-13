@@ -1,5 +1,5 @@
 # sheep_tracking
-This repo uses [detectron2](https://github.com/facebookresearch/detectron2) and deepsort implementation [nanonets_objectect_tracking](https://github.com/abhyantrika/nanonets_object_tracking) to track moving sheep in a video.
+This repo uses [detectron2](https://github.com/facebookresearch/detectron2) and deepsort implementation [nanonets_object_tracking](https://github.com/abhyantrika/nanonets_object_tracking) to track moving sheep in a video.
 
 ## setup environment
 The project results can be produced by running the below code in a GPU environment in a google colab notebook.
