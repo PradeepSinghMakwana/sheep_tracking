@@ -69,6 +69,10 @@ class VisualizationDemo(object):
 
             if "instances" in predictions:
                 pred_classes = np.array(predictions["instances"].pred_classes.to(self.cpu_device))
+                class_names = self.metadata.thing_classes
+                labels = None
+                if pred_classes is not None and class_names is not None and len(class_names) > 1:
+                    labels = np.array([class_names[i] for i in pred_classes])
                 frame_id = np.ones(len(pred_classes),dtype='int')*frame_id # broadcast frame identifier
                 negative_one = np.ones(len(pred_classes),dtype='int')*-1 
                 boxes = np.array([np.array(x) for x in predictions["instances"].pred_boxes.to(self.cpu_device)])
@@ -79,13 +83,14 @@ class VisualizationDemo(object):
                     boxes[2] = boxes[2] - boxes[0] # width = x2 - x1
                     boxes[3] = boxes[3] - boxes[1] # height = y2 - y1
                 scores = np.array(predictions["instances"].scores.to(self.cpu_device))
-                preds = np.c_[pred_classes,frame_id,negative_one,boxes,scores,negative_one,negative_one,negative_one]
-                vis_frame = []
-                for pred in preds:
-                    if pred[0]==18: # pass predictions for sheeps only
-                        vis_frame.append(pred[1:])
+                print(labels)
+                preds = np.c_[frame_id,negative_one,boxes,scores,negative_one,negative_one,pred_classes]
+                # vis_frame = []
+                # for pred in preds:
+                #     if class_names[int(pred[-1])]=='sheep': # pass predictions for sheep only
+                #         vis_frame.append(pred[:-1])
 
-            return np.array(vis_frame)
+            return np.array(preds)
 
         frame_gen = self._frame_from_video(video)
         if self.parallel:

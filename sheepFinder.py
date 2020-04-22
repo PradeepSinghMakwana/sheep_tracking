@@ -1,6 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 import sys, os
-sys.path.append(os.path.abspath(os.path.join('..', 'detectron2')))
+# sys.path.append(os.path.abspath(os.path.join('..', 'detectron2')))
+sys.path.append(os.path.abspath(os.path.join('../detectron2', 'detectron2')))
 
 import numpy as np
 import argparse
@@ -12,6 +13,7 @@ import tqdm
 from detectron2.config import get_cfg
 from detectron2.utils.logger import setup_logger
 
+from detectron2.data import MetadataCatalog
 from predictor import VisualizationDemo
 
 def setup_cfg(args):
@@ -73,6 +75,10 @@ if __name__ == "__main__":
     cfg = setup_cfg(args)
 
     demo = VisualizationDemo(cfg,parallel=args.parallel)
+    metadata = MetadataCatalog.get(
+            cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
+        )
+    class_names = metadata.thing_classes
     assert os.path.isfile(args.video_input), "Please specify a video file with --video-input"
     if args.video_input:
         video = cv2.VideoCapture(args.video_input)
@@ -106,3 +112,5 @@ if __name__ == "__main__":
         video.release()
         if args.output_text_file:
             np.savetxt(args.output_text_file, output_text_file, delimiter=",", fmt=['%d','%d','%.3f','%.3f','%.3f','%.3f','%.3f','%d','%d','%d'])
+            with open("class_names.pkl","wb"):
+                pickle.dump(class_names)
