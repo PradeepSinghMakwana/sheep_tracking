@@ -7,7 +7,7 @@ git clone https://github.com/facebookresearch/detectron2.git
 
 git clone https://github.com/abhyantrika/nanonets_object_tracking.git
 
-wget -c "https://drive.google.com/open?id=1-485FMDqf2J4RHwBgt41hHTvtiGcnbSA"
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1-485FMDqf2J4RHwBgt41hHTvtiGcnbSA' -O video-clip.mp4
 
 # Run frame-by-frame inference demo on this video (takes 3-4 minutes)
 # Using a model trained on COCO dataset
