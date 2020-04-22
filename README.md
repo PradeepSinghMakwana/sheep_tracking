@@ -48,6 +48,6 @@ These lines are from setup_N_run.sh
 ```
 For it to work best, the deep sort model used in test_on_video needs training on moving sheep data. I am just using a model trained on moving humans just like MOT challenge.
   
-This project is completely my creation (although, I have used some demo files) which wasn't paid by one of my freelancer.com clients. But it's needed by many good people.  So, I make it public. It's here you can use it for free. For any questions, just create an issue.
+This project is completely my creation (although, I have used some demo files). It's here you can use it for free. For any questions, just create an issue.
 
 Original Author: Pradeep Singh Makwana (pradeepsinghmakwana@gmail.com)
