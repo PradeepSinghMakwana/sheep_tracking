@@ -79,6 +79,10 @@ if __name__ == "__main__":
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
         )
     class_names = metadata.thing_classes
+    class_ids = []
+    for class_id, class_name in enumerate(class_names):
+        class_ids.append(str(class_id))
+    class_data = np.c_[class_ids,class_names]
     assert os.path.isfile(args.video_input), "Please specify a video file with --video-input"
     if args.video_input:
         video = cv2.VideoCapture(args.video_input)
@@ -110,7 +114,7 @@ if __name__ == "__main__":
                    output_text_file = np.concatenate([output_text_file,vis_frame])
         # release input video file
         video.release()
-        if args.output_text_file:
+        if args.output_text_file:        
+            assert (len(output_text_file)), "Error: No detections! Could not write to output file."
             np.savetxt(args.output_text_file, output_text_file, delimiter=",", fmt=['%d','%d','%.3f','%.3f','%.3f','%.3f','%.3f','%d','%d','%d'])
-            with open("class_names.pkl","wb"):
-                pickle.dump(class_names)
+            np.savetxt("class_names.txt",class_data,delimiter=",",fmt=['%s','%s'])
