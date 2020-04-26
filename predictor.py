@@ -85,10 +85,12 @@ class VisualizationDemo(object):
                 scores = np.array(predictions["instances"].scores.to(self.cpu_device))
                 print(labels)
                 preds = np.c_[frame_id,negative_one,boxes,scores,negative_one,negative_one,pred_classes]
-                # vis_frame = []
-                # for pred in preds:
-                #     if class_names[int(pred[-1])]=='sheep': # pass predictions for sheep only
-                #         vis_frame.append(pred[:-1])
+            #     Uncomment the below code to show detections only for sheep
+            #     vis_frame = []
+            #     for pred in preds:
+            #         if class_names[int(pred[-1])]=='sheep': # pass predictions for sheep only
+            #             vis_frame.append(np.c_[pred[:-1],np.array([-1])])
+            # return np.array(vis_frame)
 
             return np.array(preds)
 
