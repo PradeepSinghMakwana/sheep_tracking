@@ -28,7 +28,7 @@ The project results can be produced by running the below code in a GPU environme
 !git clone https://github.com/abhyantrika/nanonets_object_tracking.git
 
 """ get the input video file """
-!wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1-485FMDqf2J4RHwBgt41hHTvtiGcnbSA' -O video-clip.mp4
+!wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=1-485FMDqf2J4RHwBgt41hHTvtiGcnbSA" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1-485FMDqf2J4RHwBgt41hHTvtiGcnbSA" -O video-clip.mp4 && rm -rf /tmp/cookies.txt
 ```
 
 ## Run
