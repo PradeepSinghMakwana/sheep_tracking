@@ -21,8 +21,14 @@ The project results can be produced by running the below code in a GPU environme
 5. Add another code cell by clicking ` + Code` button in the top left corner of the screen. 
 6. Copy paste the below code in the second cell, and click play.
 ```
-# install dependencies: (use cu100 because colab is on CUDA 10.0)
-!pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu100/index.html
+# install detectron2: (Colab has CUDA 10.1 + torch 1.7)
+!pip install pyyaml==5.1
+import torch, torchvision
+assert torch.cuda.is_available(), "Hardware Acceleration not set to GPU"
+
+assert torch.__version__.startswith("1.7"), "torch version not in 1.7.x"
+assert torch.__version__.endswith("cu101"), "cuda version not 10.1"
+!pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.7/index.html
 
 !git clone https://github.com/facebookresearch/detectron2.git
 
